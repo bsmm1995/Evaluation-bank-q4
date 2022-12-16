@@ -1,6 +1,7 @@
 package com.bp.cbe.repository;
 
 import com.bp.cbe.domain.Booking;
+import com.bp.cbe.domain.Seat;
 import com.bp.cbe.domain.enums.MovieGenreEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,4 +19,6 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
             "AND bil.date BETWEEN :startDate AND :endDate",
             nativeQuery = true)
     List<Booking> findAllByGenreAndDates(MovieGenreEnum genre, LocalDateTime startDate, LocalDateTime endDate);
+
+    List<Booking> findAllBySeat(Seat seat);
 }

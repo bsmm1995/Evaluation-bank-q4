@@ -43,9 +43,14 @@ public class SeatController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<SeatDto> delete(@PathVariable("id") Integer id) throws Exception {
+    public ResponseEntity<Void> delete(@PathVariable("id") Integer id) throws Exception {
         seatService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @PatchMapping("/inhabilite/{id}")
+    public ResponseEntity<Void> inhabilite(@PathVariable("id") Integer id) {
+        seatService.inhabilite(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
