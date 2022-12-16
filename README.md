@@ -41,12 +41,12 @@
 
 5. Pruebas unitarias
 
-	a. <p><strong>Implementar la prueba unitaria para el servicio del punto 3 literal a </strong></p>
+	<p><strong>a. Implementar la prueba unitaria para el servicio del punto 3 literal a </strong></p>
 
 6. Prueba de integración
 
-	a. <p><strong>Implementar la prueba de integración para el query del punto 2 literal a </strong></p>
+	<p><strong>a. Implementar la prueba de integración para el query del punto 2 literal a </strong></p>
 
-	b. <p><strong>Implementar la prueba de integración para el query del punto 2 literal b </strong></p>
+	<p><strong>b. Implementar la prueba de integración para el query del punto 2 literal b </strong></p>
 
-	a. <p><strong>Implementar la prueba de integración para el endpoint del punto 4 literal b2</strong></p>
+	<p><strong>c. Implementar la prueba de integración para el endpoint del punto 4 literal b2</strong></p>
