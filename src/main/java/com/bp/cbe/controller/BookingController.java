@@ -32,8 +32,8 @@ public class BookingController {
     }
 
     @GetMapping("/filter")
-    public ResponseEntity<List<BookingDto>> findByGenreAndDates(@RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
-                                                                @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate) throws Exception {
+    public ResponseEntity<List<BookingDto>> findByGenreAndDates(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss", iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
+                                                                @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss", iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate) {
         return ResponseEntity.ok(bookingService.findByGenreAndDates(startDate, endDate));
     }
 
