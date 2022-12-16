@@ -15,7 +15,7 @@ public interface BillboardService extends GenericCrudService<BillboardDto, Integ
      * @param fiter
      * @return
      */
-    List<BusyAndAvaliableSeatsResponseDto> listBusyAndAvaliableSeatsByRoomAndDate(BusyAndAvaliableSeatsRequestDto fiter) throws Exception;
+    BusyAndAvaliableSeatsResponseDto listBusyAndAvaliableSeatsByRoomAndDate(BusyAndAvaliableSeatsRequestDto fiter) throws Exception;
 
     /**
      * Refers to item 3.c of the assessment test

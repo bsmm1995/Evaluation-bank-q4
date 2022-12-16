@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Repository
 public interface BillboardRepository extends JpaRepository<Billboard, Integer> {
@@ -19,5 +18,5 @@ public interface BillboardRepository extends JpaRepository<Billboard, Integer> {
             "WHERE sea.id_room = :roomId " +
             "AND bil.date = :date",
             nativeQuery = true)
-    List<BusyAndTotalSeats> findAllStatusByRoomId(Integer roomId, LocalDate date);
+    BusyAndTotalSeats findAllStatusByRoomId(Integer roomId, LocalDate date);
 }

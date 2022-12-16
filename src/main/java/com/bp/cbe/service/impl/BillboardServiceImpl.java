@@ -1,6 +1,7 @@
 package com.bp.cbe.service.impl;
 
 import com.bp.cbe.domain.Billboard;
+import com.bp.cbe.domain.interf.BusyAndTotalSeats;
 import com.bp.cbe.exception.BillboardCancelLowerDateException;
 import com.bp.cbe.repository.BillboardRepository;
 import com.bp.cbe.service.BillboardService;
@@ -54,9 +55,10 @@ public class BillboardServiceImpl implements BillboardService {
     }
 
     @Override
-    public List<BusyAndAvaliableSeatsResponseDto> listBusyAndAvaliableSeatsByRoomAndDate(BusyAndAvaliableSeatsRequestDto fiter) {
-        return billboardRepository.findAllStatusByRoomId(fiter.getIdRoom(), fiter.getBillboardDate())
-                .stream().map(e -> new BusyAndAvaliableSeatsResponseDto(e.getTotal() - e.getBusySeats(), e.getBusySeats(), fiter.getBillboardDate())).toList();
+    public BusyAndAvaliableSeatsResponseDto listBusyAndAvaliableSeatsByRoomAndDate(BusyAndAvaliableSeatsRequestDto fiter) {
+        BusyAndTotalSeats result = billboardRepository.findAllStatusByRoomId(fiter.getIdRoom(), fiter.getBillboardDate());
+        int busySeats = result.getBusySeats() != null ? result.getBusySeats() : 0;
+        return new BusyAndAvaliableSeatsResponseDto(result.getTotal() - busySeats, busySeats, fiter.getBillboardDate());
     }
 
     @Override

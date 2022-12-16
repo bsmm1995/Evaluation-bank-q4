@@ -32,7 +32,7 @@ public class BillboardController {
     }
 
     @GetMapping("/status")
-    public ResponseEntity<List<BusyAndAvaliableSeatsResponseDto>> listBusyAndAvaliableSeatsByRoomAndDate(@PathVariable BusyAndAvaliableSeatsRequestDto fiter) throws Exception {
+    public ResponseEntity<BusyAndAvaliableSeatsResponseDto> listBusyAndAvaliableSeatsByRoomAndDate(BusyAndAvaliableSeatsRequestDto fiter) throws Exception {
         return ResponseEntity.ok(billboardService.listBusyAndAvaliableSeatsByRoomAndDate(fiter));
     }
 
