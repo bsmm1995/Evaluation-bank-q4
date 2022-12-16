@@ -20,7 +20,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public CustomerDto findById(Integer id) throws Exception {
+	public CustomerDto findById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

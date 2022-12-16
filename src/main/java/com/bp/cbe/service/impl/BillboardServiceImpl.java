@@ -30,7 +30,7 @@ public class BillboardServiceImpl implements BillboardService {
     }
 
     @Override
-    public BillboardDto findById(Integer id) throws Exception {
+    public BillboardDto findById(Integer id)  {
 
         return billboardMapper.toBillboardDto(billboardRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Billboard not found id " + id)));

@@ -24,7 +24,7 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public MovieDto findById(Integer id) throws Exception {
+	public MovieDto findById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

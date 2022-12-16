@@ -28,7 +28,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public BookingDto findById(Integer id) throws Exception {
+    public BookingDto findById(Integer id) {
         // TODO Auto-generated method stub
         return null;
     }

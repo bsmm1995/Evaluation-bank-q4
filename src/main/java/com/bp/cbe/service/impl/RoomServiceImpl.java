@@ -24,7 +24,7 @@ public class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
-	public RoomDto findById(Integer id) throws Exception {
+	public RoomDto findById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

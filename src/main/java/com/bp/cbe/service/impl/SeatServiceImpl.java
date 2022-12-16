@@ -29,7 +29,7 @@ public class SeatServiceImpl implements SeatService {
     }
 
     @Override
-    public SeatDto findById(Integer id) throws Exception {
+    public SeatDto findById(Integer id) {
         return seatMapper.toSeatDto(seatRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Seat not found id " + id)));
     }
 
