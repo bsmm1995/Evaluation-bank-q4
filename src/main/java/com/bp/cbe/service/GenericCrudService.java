@@ -10,7 +10,7 @@ public interface GenericCrudService<T, I> {
 
     T create(T t);
 
-    T edit(T t);
+    T update(T t);
 
     void delete(I i);
 }

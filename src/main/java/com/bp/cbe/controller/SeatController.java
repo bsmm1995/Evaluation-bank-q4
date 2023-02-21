@@ -39,7 +39,7 @@ public class SeatController {
 
     @PutMapping
     public ResponseEntity<SeatDto> edit(@RequestBody @Valid SeatDto seatDto) {
-        return ResponseEntity.ok(seatService.edit(seatDto));
+        return ResponseEntity.ok(seatService.update(seatDto));
     }
 
     @DeleteMapping("/{id}")

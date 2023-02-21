@@ -41,7 +41,7 @@ public class BillboardServiceImpl implements BillboardService {
     }
 
     @Override
-    public BillboardDto edit(BillboardDto billboardDto) {
+    public BillboardDto update(BillboardDto billboardDto) {
         Billboard editedBillboard = billboardRepository.save(billboardMapper.toBillboard(billboardDto));
         return billboardMapper.toBillboardDto(editedBillboard);
     }

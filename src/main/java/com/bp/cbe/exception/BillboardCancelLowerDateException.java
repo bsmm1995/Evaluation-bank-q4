@@ -1,10 +1,8 @@
 package com.bp.cbe.exception;
 
-public class BillboardCancelLowerDateException extends Exception {
+public class BillboardCancelLowerDateException extends RuntimeException {
 
-	private static final long serialVersionUID = 1L;
-
-	public BillboardCancelLowerDateException(String message) {
-		super(message);
-	}
+    public BillboardCancelLowerDateException(String message) {
+        super(message);
+    }
 }

@@ -40,7 +40,7 @@ public class SeatServiceImpl implements SeatService {
     }
 
     @Override
-    public SeatDto edit(SeatDto seatDto) {
+    public SeatDto update(SeatDto seatDto) {
         Seat editedSeat = seatRepository.save(seatMapper.toSeat(seatDto));
         return seatMapper.toSeatDto(editedSeat);
     }

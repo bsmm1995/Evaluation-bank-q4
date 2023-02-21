@@ -38,7 +38,7 @@ public class CustomerController {
 
     @PutMapping
     public ResponseEntity<CustomerDto> edit(@RequestBody @Valid CustomerDto customerDto) {
-        return ResponseEntity.ok(customerService.edit(customerDto));
+        return ResponseEntity.ok(customerService.update(customerDto));
     }
 
     @DeleteMapping("/{id}")

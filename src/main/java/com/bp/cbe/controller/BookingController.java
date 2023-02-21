@@ -46,7 +46,7 @@ public class BookingController {
 
     @PutMapping
     public ResponseEntity<BookingDto> edit(@RequestBody @Valid BookingDto bookingDto) {
-        return ResponseEntity.ok(bookingService.edit(bookingDto));
+        return ResponseEntity.ok(bookingService.update(bookingDto));
     }
 
     @DeleteMapping("/{id}")

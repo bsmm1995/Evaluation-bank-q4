@@ -30,7 +30,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDto edit(CustomerDto t) {
+    public CustomerDto update(CustomerDto t) {
         // TODO Auto-generated method stub
         return null;
     }

@@ -34,7 +34,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public RoomDto edit(RoomDto t) {
+    public RoomDto update(RoomDto t) {
         // TODO Auto-generated method stub
         return null;
     }

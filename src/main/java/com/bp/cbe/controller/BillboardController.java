@@ -46,7 +46,7 @@ public class BillboardController {
 
     @PutMapping
     public ResponseEntity<BillboardDto> edit(@RequestBody @Valid BillboardDto billboardDto) {
-        return ResponseEntity.ok(billboardService.edit(billboardDto));
+        return ResponseEntity.ok(billboardService.update(billboardDto));
     }
 
     @DeleteMapping("/{id}")

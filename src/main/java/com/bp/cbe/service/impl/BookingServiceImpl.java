@@ -1,5 +1,6 @@
 package com.bp.cbe.service.impl;
 
+import com.bp.cbe.domain.Booking;
 import com.bp.cbe.domain.dto.BillboardDto;
 import com.bp.cbe.domain.dto.BookingDto;
 import com.bp.cbe.domain.dto.MovieGenreAndDateRequestDto;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,26 +26,33 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public List<BookingDto> listAll() {
-        // TODO Auto-generated method stub
-        return null;
+        return bookingRepository.findAll().stream().map(bookingMapper::toBookingDto).toList();
     }
 
     @Override
     public BookingDto findById(Integer id) {
-        // TODO Auto-generated method stub
-        return null;
+        return bookingRepository.findById(id).map(bookingMapper::toBookingDto)
+                .orElseThrow(() -> new NoSuchElementException("Booking not found id " + id));
     }
 
     @Override
     public BookingDto create(BookingDto t) {
-        // TODO Auto-generated method stub
-        return null;
+        Booking entity = bookingMapper.toBooking(t);
+        return bookingMapper.toBookingDto(bookingRepository.save(entity));
     }
 
     @Override
-    public BookingDto edit(BookingDto t) {
-        // TODO Auto-generated method stub
-        return null;
+    public BookingDto update(BookingDto t) {
+        if (bookingRepository.existsById(t.getId())) {
+            Optional<Booking> optional = bookingRepository.findById(t.getId());
+            optional.ifPresent(entity -> {
+                entity.setDate(t.getDate());
+                bookingRepository.save(entity);
+            });
+            return t;
+        } else {
+            throw new NoSuchElementException("Booking not found id " + t.getId());
+        }
     }
 
     @Override

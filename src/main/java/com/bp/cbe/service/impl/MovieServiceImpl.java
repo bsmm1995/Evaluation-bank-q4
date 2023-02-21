@@ -36,7 +36,7 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public MovieDto edit(MovieDto t)  {
+	public MovieDto update(MovieDto t)  {
 		// TODO Auto-generated method stub
 		return null;
 	}
