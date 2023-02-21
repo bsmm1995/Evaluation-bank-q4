@@ -1,10 +1,9 @@
 package com.bp.cbe.controller;
 
 import com.bp.cbe.service.BookingService;
-import com.bp.cbe.service.dto.BookingDto;
+import com.bp.cbe.domain.dto.BookingDto;
 import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -22,13 +21,13 @@ public class BookingController {
     private BookingService bookingService;
 
     @GetMapping
-    public ResponseEntity<List<BookingDto>> list() throws Exception {
-        return new ResponseEntity<>(bookingService.listAll(), HttpStatus.OK);
+    public ResponseEntity<List<BookingDto>> list() {
+        return ResponseEntity.ok(bookingService.listAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<BookingDto> findById(@PathVariable("id") Integer id) throws Exception {
-        return new ResponseEntity<>(bookingService.findById(id), HttpStatus.OK);
+    public ResponseEntity<BookingDto> findById(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(bookingService.findById(id));
     }
 
     @GetMapping("/filter")
@@ -38,7 +37,7 @@ public class BookingController {
     }
 
     @PostMapping
-    public ResponseEntity<BookingDto> create(@RequestBody @Valid BookingDto bookingDto) throws Exception {
+    public ResponseEntity<BookingDto> create(@RequestBody @Valid BookingDto bookingDto) {
         BookingDto createdClient = bookingService.create(bookingDto);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(createdClient.getId()).toUri();
@@ -46,14 +45,13 @@ public class BookingController {
     }
 
     @PutMapping
-    public ResponseEntity<BookingDto> edit(@RequestBody @Valid BookingDto bookingDto) throws Exception {
-        return new ResponseEntity<>(bookingService.edit(bookingDto), HttpStatus.OK);
+    public ResponseEntity<BookingDto> edit(@RequestBody @Valid BookingDto bookingDto) {
+        return ResponseEntity.ok(bookingService.edit(bookingDto));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<BookingDto> delete(@PathVariable("id") Integer id) throws Exception {
+    public ResponseEntity<BookingDto> delete(@PathVariable("id") Integer id) {
         bookingService.delete(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity.noContent().build();
     }
-
 }

@@ -1,12 +1,12 @@
 package com.bp.cbe.service.impl;
 
+import com.bp.cbe.domain.dto.BillboardDto;
+import com.bp.cbe.domain.dto.BookingDto;
+import com.bp.cbe.domain.dto.MovieGenreAndDateRequestDto;
+import com.bp.cbe.domain.dto.SeatDto;
 import com.bp.cbe.domain.enums.MovieGenreEnum;
 import com.bp.cbe.repository.BookingRepository;
 import com.bp.cbe.service.BookingService;
-import com.bp.cbe.service.dto.BillboardDto;
-import com.bp.cbe.service.dto.BookingDto;
-import com.bp.cbe.service.dto.MovieGenreAndDateRequestDto;
-import com.bp.cbe.service.dto.SeatDto;
 import com.bp.cbe.service.mapper.BookingMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class BookingServiceImpl implements BookingService {
     private final BookingMapper bookingMapper;
 
     @Override
-    public List<BookingDto> listAll() throws Exception {
+    public List<BookingDto> listAll() {
         // TODO Auto-generated method stub
         return null;
     }
@@ -34,37 +34,37 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public BookingDto create(BookingDto t) throws Exception {
+    public BookingDto create(BookingDto t) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public BookingDto edit(BookingDto t) throws Exception {
+    public BookingDto edit(BookingDto t) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public void delete(Integer id) throws Exception {
+    public void delete(Integer id) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public List<BookingDto> findByMovieGenreAndDate(MovieGenreAndDateRequestDto movieGenreAndDate) throws Exception {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public BookingDto cancelByDisabledSeat(SeatDto disabledSeat) throws Exception {
+    public List<BookingDto> findByMovieGenreAndDate(MovieGenreAndDateRequestDto movieGenreAndDate) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public BookingDto cancelByCanceledBillboard(BillboardDto canceledBillboard) throws Exception {
+    public BookingDto cancelByDisabledSeat(SeatDto disabledSeat) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public BookingDto cancelByCanceledBillboard(BillboardDto canceledBillboard) {
         // TODO Auto-generated method stub
         return null;
     }

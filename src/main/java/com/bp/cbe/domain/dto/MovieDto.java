@@ -1,4 +1,4 @@
-package com.bp.cbe.service.dto;
+package com.bp.cbe.domain.dto;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;

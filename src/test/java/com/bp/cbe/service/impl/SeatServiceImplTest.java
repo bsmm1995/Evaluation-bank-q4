@@ -6,7 +6,7 @@ import com.bp.cbe.domain.Seat;
 import com.bp.cbe.repository.BookingRepository;
 import com.bp.cbe.repository.SeatRepository;
 import com.bp.cbe.service.SeatService;
-import com.bp.cbe.service.dto.SeatDto;
+import com.bp.cbe.domain.dto.SeatDto;
 import com.bp.cbe.service.mapper.SeatMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

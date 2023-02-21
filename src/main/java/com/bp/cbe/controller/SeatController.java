@@ -1,7 +1,7 @@
 package com.bp.cbe.controller;
 
 import com.bp.cbe.service.SeatService;
-import com.bp.cbe.service.dto.SeatDto;
+import com.bp.cbe.domain.dto.SeatDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,17 +20,17 @@ public class SeatController {
     private SeatService seatService;
 
     @GetMapping
-    public ResponseEntity<List<SeatDto>> list() throws Exception {
-        return new ResponseEntity<>(seatService.listAll(), HttpStatus.OK);
+    public ResponseEntity<List<SeatDto>> list() {
+        return ResponseEntity.ok(seatService.listAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SeatDto> findById(@PathVariable("id") Integer id) throws Exception {
-        return new ResponseEntity<>(seatService.findById(id), HttpStatus.OK);
+    public ResponseEntity<SeatDto> findById(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(seatService.findById(id));
     }
 
     @PostMapping
-    public ResponseEntity<SeatDto> create(@RequestBody @Valid SeatDto seatDto) throws Exception {
+    public ResponseEntity<SeatDto> create(@RequestBody @Valid SeatDto seatDto) {
         SeatDto createdClient = seatService.create(seatDto);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(createdClient.getId()).toUri();
@@ -38,12 +38,12 @@ public class SeatController {
     }
 
     @PutMapping
-    public ResponseEntity<SeatDto> edit(@RequestBody @Valid SeatDto seatDto) throws Exception {
-        return new ResponseEntity<>(seatService.edit(seatDto), HttpStatus.OK);
+    public ResponseEntity<SeatDto> edit(@RequestBody @Valid SeatDto seatDto) {
+        return ResponseEntity.ok(seatService.edit(seatDto));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable("id") Integer id) throws Exception {
+    public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
         seatService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

@@ -1,39 +1,19 @@
 package com.bp.cbe.service;
 
-import com.bp.cbe.service.dto.BillboardDto;
-import com.bp.cbe.service.dto.BookingDto;
-import com.bp.cbe.service.dto.MovieGenreAndDateRequestDto;
-import com.bp.cbe.service.dto.SeatDto;
+import com.bp.cbe.domain.dto.BillboardDto;
+import com.bp.cbe.domain.dto.BookingDto;
+import com.bp.cbe.domain.dto.MovieGenreAndDateRequestDto;
+import com.bp.cbe.domain.dto.SeatDto;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 public interface BookingService extends GenericCrudService<BookingDto, Integer> {
-    /**
-     * Refers to item 2.a of the assessment test
-     *
-     * @param genre
-     * @param startDate
-     * @param endDate
-     * @return
-     */
-    public List<BookingDto> findByMovieGenreAndDate(MovieGenreAndDateRequestDto movieGenreAndDate) throws Exception;
+    List<BookingDto> findByMovieGenreAndDate(MovieGenreAndDateRequestDto movieGenreAndDate);
 
-    /**
-     * Refers to item 3.a of the assessment test
-     *
-     * @param inactiveSeat
-     * @return
-     */
-    public BookingDto cancelByDisabledSeat(SeatDto disabledSeat) throws Exception;
+    BookingDto cancelByDisabledSeat(SeatDto disabledSeat);
 
-    /**
-     * Refers to item 3.b of the assessment test
-     *
-     * @param canceledBillboard
-     * @return
-     */
-    public BookingDto cancelByCanceledBillboard(BillboardDto canceledBillboard) throws Exception;
+    BookingDto cancelByCanceledBillboard(BillboardDto canceledBillboard);
 
     List<BookingDto> findByGenreAndDates(LocalDateTime startDate, LocalDateTime endDate);
 }

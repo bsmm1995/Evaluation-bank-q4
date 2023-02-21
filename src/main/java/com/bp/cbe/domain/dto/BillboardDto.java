@@ -1,4 +1,4 @@
-package com.bp.cbe.service.dto;
+package com.bp.cbe.domain.dto;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

@@ -1,15 +1,13 @@
 package com.bp.cbe.service.mapper;
 
-import org.mapstruct.Mapper;
-
 import com.bp.cbe.domain.Customer;
-import com.bp.cbe.service.dto.CustomerDto;
+import com.bp.cbe.domain.dto.CustomerDto;
+import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface CustomerMapper {
 
-	public Customer toBooking(CustomerDto customerDto);
+    Customer toBooking(CustomerDto customerDto);
 
-	public CustomerDto toBookingDto(Customer customer);
-
+    CustomerDto toBookingDto(Customer customer);
 }

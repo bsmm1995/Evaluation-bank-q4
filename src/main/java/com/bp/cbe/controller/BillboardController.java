@@ -1,9 +1,9 @@
 package com.bp.cbe.controller;
 
 import com.bp.cbe.service.BillboardService;
-import com.bp.cbe.service.dto.BillboardDto;
-import com.bp.cbe.service.dto.BusyAndAvaliableSeatsRequestDto;
-import com.bp.cbe.service.dto.BusyAndAvaliableSeatsResponseDto;
+import com.bp.cbe.domain.dto.BillboardDto;
+import com.bp.cbe.domain.dto.BusyAndAvaliableSeatsRequestDto;
+import com.bp.cbe.domain.dto.BusyAndAvaliableSeatsResponseDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,22 +22,22 @@ public class BillboardController {
     private BillboardService billboardService;
 
     @GetMapping
-    public ResponseEntity<List<BillboardDto>> list() throws Exception {
-        return new ResponseEntity<>(billboardService.listAll(), HttpStatus.OK);
+    public ResponseEntity<List<BillboardDto>> list() {
+        return ResponseEntity.ok(billboardService.listAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<BillboardDto> findById(@PathVariable("id") Integer id) throws Exception {
-        return new ResponseEntity<>(billboardService.findById(id), HttpStatus.OK);
+    public ResponseEntity<BillboardDto> findById(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(billboardService.findById(id));
     }
 
     @GetMapping("/status")
-    public ResponseEntity<BusyAndAvaliableSeatsResponseDto> listBusyAndAvaliableSeatsByRoomAndDate(BusyAndAvaliableSeatsRequestDto fiter) throws Exception {
+    public ResponseEntity<BusyAndAvaliableSeatsResponseDto> listBusyAndAvaliableSeatsByRoomAndDate(BusyAndAvaliableSeatsRequestDto fiter) {
         return ResponseEntity.ok(billboardService.listBusyAndAvaliableSeatsByRoomAndDate(fiter));
     }
 
     @PostMapping
-    public ResponseEntity<BillboardDto> create(@RequestBody @Valid BillboardDto billboardDto) throws Exception {
+    public ResponseEntity<BillboardDto> create(@RequestBody @Valid BillboardDto billboardDto)  {
         BillboardDto createdBillboardDto = billboardService.create(billboardDto);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(createdBillboardDto.getId()).toUri();
@@ -45,14 +45,13 @@ public class BillboardController {
     }
 
     @PutMapping
-    public ResponseEntity<BillboardDto> edit(@RequestBody @Valid BillboardDto billboardDto) throws Exception {
-        return new ResponseEntity<>(billboardService.edit(billboardDto), HttpStatus.OK);
+    public ResponseEntity<BillboardDto> edit(@RequestBody @Valid BillboardDto billboardDto) {
+        return ResponseEntity.ok(billboardService.edit(billboardDto));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable("id") Integer id) throws Exception {
+    public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
         billboardService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
 }

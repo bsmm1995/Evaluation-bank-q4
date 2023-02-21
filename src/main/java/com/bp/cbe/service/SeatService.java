@@ -1,6 +1,6 @@
 package com.bp.cbe.service;
 
-import com.bp.cbe.service.dto.SeatDto;
+import com.bp.cbe.domain.dto.SeatDto;
 
 public interface SeatService extends GenericCrudService<SeatDto, Integer> {
 

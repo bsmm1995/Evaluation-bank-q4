@@ -2,10 +2,10 @@ package com.bp.cbe.service.impl;
 
 import com.bp.cbe.domain.Booking;
 import com.bp.cbe.domain.Seat;
+import com.bp.cbe.domain.dto.SeatDto;
 import com.bp.cbe.repository.BookingRepository;
 import com.bp.cbe.repository.SeatRepository;
 import com.bp.cbe.service.SeatService;
-import com.bp.cbe.service.dto.SeatDto;
 import com.bp.cbe.service.mapper.SeatMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class SeatServiceImpl implements SeatService {
     private SeatMapper seatMapper;
 
     @Override
-    public List<SeatDto> listAll() throws Exception {
+    public List<SeatDto> listAll() {
 
         return seatRepository.findAll().stream().map(seat -> seatMapper.toSeatDto(seat)).toList();
     }
@@ -34,19 +34,19 @@ public class SeatServiceImpl implements SeatService {
     }
 
     @Override
-    public SeatDto create(SeatDto seatDto) throws Exception {
+    public SeatDto create(SeatDto seatDto) {
         Seat createdSeat = seatRepository.save(seatMapper.toSeat(seatDto));
         return seatMapper.toSeatDto(createdSeat);
     }
 
     @Override
-    public SeatDto edit(SeatDto seatDto) throws Exception {
+    public SeatDto edit(SeatDto seatDto) {
         Seat editedSeat = seatRepository.save(seatMapper.toSeat(seatDto));
         return seatMapper.toSeatDto(editedSeat);
     }
 
     @Override
-    public void delete(Integer id) throws Exception {
+    public void delete(Integer id) {
         seatRepository.deleteById(id);
 
     }

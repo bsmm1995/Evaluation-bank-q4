@@ -2,12 +2,11 @@ package com.bp.cbe.service.impl;
 
 import com.bp.cbe.domain.Billboard;
 import com.bp.cbe.domain.interf.BusyAndTotalSeats;
-import com.bp.cbe.exception.BillboardCancelLowerDateException;
 import com.bp.cbe.repository.BillboardRepository;
 import com.bp.cbe.service.BillboardService;
-import com.bp.cbe.service.dto.BillboardDto;
-import com.bp.cbe.service.dto.BusyAndAvaliableSeatsRequestDto;
-import com.bp.cbe.service.dto.BusyAndAvaliableSeatsResponseDto;
+import com.bp.cbe.domain.dto.BillboardDto;
+import com.bp.cbe.domain.dto.BusyAndAvaliableSeatsRequestDto;
+import com.bp.cbe.domain.dto.BusyAndAvaliableSeatsResponseDto;
 import com.bp.cbe.service.mapper.BillboardMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,34 +23,32 @@ public class BillboardServiceImpl implements BillboardService {
     private BillboardMapper billboardMapper;
 
     @Override
-    public List<BillboardDto> listAll() throws Exception {
+    public List<BillboardDto> listAll() {
         return billboardRepository.findAll().stream().map(billboard -> billboardMapper.toBillboardDto(billboard))
                 .toList();
     }
 
     @Override
-    public BillboardDto findById(Integer id)  {
-
+    public BillboardDto findById(Integer id) {
         return billboardMapper.toBillboardDto(billboardRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Billboard not found id " + id)));
     }
 
     @Override
-    public BillboardDto create(BillboardDto billboardDto) throws Exception {
+    public BillboardDto create(BillboardDto billboardDto) {
         Billboard createdBillboard = billboardRepository.save(billboardMapper.toBillboard(billboardDto));
         return billboardMapper.toBillboardDto(createdBillboard);
     }
 
     @Override
-    public BillboardDto edit(BillboardDto billboardDto) throws Exception {
+    public BillboardDto edit(BillboardDto billboardDto) {
         Billboard editedBillboard = billboardRepository.save(billboardMapper.toBillboard(billboardDto));
         return billboardMapper.toBillboardDto(editedBillboard);
     }
 
     @Override
-    public void delete(Integer id) throws Exception {
+    public void delete(Integer id) {
         billboardRepository.deleteById(id);
-
     }
 
     @Override
@@ -62,9 +59,7 @@ public class BillboardServiceImpl implements BillboardService {
     }
 
     @Override
-    public void cancelBillboard(BillboardDto billboard) throws BillboardCancelLowerDateException, Exception {
+    public void cancelBillboard(BillboardDto billboard) {
         // TODO Auto-generated method stub
-
     }
-
 }

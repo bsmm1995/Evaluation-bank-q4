@@ -1,15 +1,13 @@
 package com.bp.cbe.service.mapper;
 
-import org.mapstruct.Mapper;
-
 import com.bp.cbe.domain.Room;
-import com.bp.cbe.service.dto.RoomDto;
+import com.bp.cbe.domain.dto.RoomDto;
+import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface RoomMapper {
 
-	public Room toRoom(RoomDto roomDto);
+    Room toRoom(RoomDto roomDto);
 
-	public RoomDto toRoomDto(Room room);
-
+    RoomDto toRoomDto(Room room);
 }
