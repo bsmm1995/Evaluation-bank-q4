@@ -7,3 +7,11 @@ insert into room
 values (1, true, 'SALA 1', 1),
        (2, true, 'SALA 2', 2),
        (3, true, 'SALA 3', 3);
+
+UPDATE GENERATOR
+SET NEXT_VAL = 52
+WHERE SEQUENCE_NAME = 'movie';
+
+UPDATE GENERATOR
+SET NEXT_VAL = 52
+WHERE SEQUENCE_NAME = 'room';

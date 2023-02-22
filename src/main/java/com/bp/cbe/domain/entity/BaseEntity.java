@@ -1,21 +1,17 @@
 package com.bp.cbe.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
+@Getter
+@Setter
 @MappedSuperclass
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@SuperBuilder
 public class BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "GENERATOR")
     private Integer id;
-    @Column(name = "status", nullable = false)
+    @Column(nullable = false)
     private Boolean status = Boolean.TRUE;
 }
