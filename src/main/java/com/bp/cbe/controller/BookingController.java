@@ -45,7 +45,7 @@ public class BookingController {
     }
 
     @PutMapping
-    public ResponseEntity<BookingDto> edit(@RequestBody @Valid BookingDto bookingDto) {
+    public ResponseEntity<BookingDto> update(@RequestBody @Valid BookingDto bookingDto) {
         return ResponseEntity.ok(bookingService.update(bookingDto));
     }
 

@@ -45,7 +45,7 @@ public class BillboardController {
     }
 
     @PutMapping
-    public ResponseEntity<BillboardDto> edit(@RequestBody @Valid BillboardDto billboardDto) {
+    public ResponseEntity<BillboardDto> update(@RequestBody @Valid BillboardDto billboardDto) {
         return ResponseEntity.ok(billboardService.update(billboardDto));
     }
 

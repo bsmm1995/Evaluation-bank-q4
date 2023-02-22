@@ -38,7 +38,7 @@ public class RoomController {
     }
 
     @PutMapping
-    public ResponseEntity<RoomDto> edit(@RequestBody @Valid RoomDto roomDto) {
+    public ResponseEntity<RoomDto> update(@RequestBody @Valid RoomDto roomDto) {
         return ResponseEntity.ok(roomService.update(roomDto));
     }
 

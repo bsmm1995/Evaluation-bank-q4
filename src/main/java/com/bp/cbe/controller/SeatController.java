@@ -1,7 +1,7 @@
 package com.bp.cbe.controller;
 
-import com.bp.cbe.service.SeatService;
 import com.bp.cbe.domain.dto.SeatDto;
+import com.bp.cbe.service.SeatService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +38,7 @@ public class SeatController {
     }
 
     @PutMapping
-    public ResponseEntity<SeatDto> edit(@RequestBody @Valid SeatDto seatDto) {
+    public ResponseEntity<SeatDto> update(@RequestBody @Valid SeatDto seatDto) {
         return ResponseEntity.ok(seatService.update(seatDto));
     }
 

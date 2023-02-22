@@ -38,7 +38,7 @@ public class MovieController {
     }
 
     @PutMapping
-    public ResponseEntity<MovieDto> edit(@RequestBody @Valid MovieDto movieDto) {
+    public ResponseEntity<MovieDto> update(@RequestBody @Valid MovieDto movieDto) {
         return ResponseEntity.ok(movieService.update(movieDto));
     }
 
