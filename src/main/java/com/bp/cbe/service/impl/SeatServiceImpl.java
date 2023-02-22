@@ -7,7 +7,7 @@ import com.bp.cbe.repository.BookingRepository;
 import com.bp.cbe.repository.SeatRepository;
 import com.bp.cbe.service.SeatService;
 import com.bp.cbe.service.mapper.SeatMapper;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -15,17 +15,15 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class SeatServiceImpl implements SeatService {
-
-    private SeatRepository seatRepository;
-    private BookingRepository bookingRepository;
-    private SeatMapper seatMapper;
+    private final SeatRepository seatRepository;
+    private final BookingRepository bookingRepository;
+    private final SeatMapper seatMapper;
 
     @Override
     public List<SeatDto> listAll() {
-
-        return seatRepository.findAll().stream().map(seat -> seatMapper.toSeatDto(seat)).toList();
+        return seatRepository.findAll().stream().map(seatMapper::toSeatDto).toList();
     }
 
     @Override
@@ -48,7 +46,6 @@ public class SeatServiceImpl implements SeatService {
     @Override
     public void delete(Integer id) {
         seatRepository.deleteById(id);
-
     }
 
     @Override

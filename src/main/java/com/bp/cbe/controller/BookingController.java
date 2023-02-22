@@ -3,6 +3,7 @@ package com.bp.cbe.controller;
 import com.bp.cbe.service.BookingService;
 import com.bp.cbe.domain.dto.BookingDto;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cinema-booking/api/v1/bookings")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class BookingController {
 
     private BookingService bookingService;

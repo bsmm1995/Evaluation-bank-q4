@@ -10,7 +10,9 @@ import com.bp.cbe.repository.BookingRepository;
 import com.bp.cbe.service.BookingService;
 import com.bp.cbe.service.mapper.BookingMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -42,14 +44,14 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
+    @Modifying
+    @Transactional
     public BookingDto update(BookingDto t) {
-        if (bookingRepository.existsById(t.getId())) {
-            Optional<Booking> optional = bookingRepository.findById(t.getId());
-            optional.ifPresent(entity -> {
-                entity.setDate(t.getDate());
-                bookingRepository.save(entity);
-            });
-            return t;
+        Optional<Booking> optional = bookingRepository.findById(t.getId());
+        if (optional.isPresent()) {
+            var entity = optional.get();
+            entity.setDate(t.getDate());
+            return bookingMapper.toBookingDto(bookingRepository.save(entity));
         } else {
             throw new NoSuchElementException("Booking not found id " + t.getId());
         }
@@ -57,8 +59,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void delete(Integer id) {
-        // TODO Auto-generated method stub
-
+        bookingRepository.deleteById(id);
     }
 
     @Override

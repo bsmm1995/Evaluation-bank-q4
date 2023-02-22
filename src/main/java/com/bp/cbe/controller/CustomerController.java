@@ -3,6 +3,7 @@ package com.bp.cbe.controller;
 import com.bp.cbe.service.CustomerService;
 import com.bp.cbe.domain.dto.CustomerDto;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cinema-booking/api/v1/clients")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CustomerController {
 
     private CustomerService customerService;

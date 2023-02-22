@@ -1,30 +1,31 @@
 package com.bp.cbe.service.impl;
 
 import com.bp.cbe.domain.Billboard;
-import com.bp.cbe.domain.interf.BusyAndTotalSeats;
-import com.bp.cbe.repository.BillboardRepository;
-import com.bp.cbe.service.BillboardService;
 import com.bp.cbe.domain.dto.BillboardDto;
 import com.bp.cbe.domain.dto.BusyAndAvaliableSeatsRequestDto;
 import com.bp.cbe.domain.dto.BusyAndAvaliableSeatsResponseDto;
+import com.bp.cbe.domain.interf.BusyAndTotalSeats;
+import com.bp.cbe.repository.BillboardRepository;
+import com.bp.cbe.service.BillboardService;
 import com.bp.cbe.service.mapper.BillboardMapper;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class BillboardServiceImpl implements BillboardService {
 
-    private BillboardRepository billboardRepository;
+    private final BillboardRepository billboardRepository;
 
-    private BillboardMapper billboardMapper;
+    private final BillboardMapper billboardMapper;
 
     @Override
     public List<BillboardDto> listAll() {
-        return billboardRepository.findAll().stream().map(billboard -> billboardMapper.toBillboardDto(billboard))
+        return billboardRepository.findAll().stream().map(billboardMapper::toBillboardDto)
                 .toList();
     }
 
@@ -42,8 +43,14 @@ public class BillboardServiceImpl implements BillboardService {
 
     @Override
     public BillboardDto update(BillboardDto billboardDto) {
-        Billboard editedBillboard = billboardRepository.save(billboardMapper.toBillboard(billboardDto));
-        return billboardMapper.toBillboardDto(editedBillboard);
+        Optional<Billboard> optional = billboardRepository.findById(billboardDto.getId());
+        if (optional.isPresent()) {
+            var entity = optional.get();
+            entity.setDate(billboardDto.getDate());
+            return billboardMapper.toBillboardDto(billboardRepository.save(entity));
+        } else {
+            throw new NoSuchElementException("Billboard not found id " + billboardDto.getId());
+        }
     }
 
     @Override

@@ -5,6 +5,7 @@ import com.bp.cbe.domain.dto.BillboardDto;
 import com.bp.cbe.domain.dto.BusyAndAvaliableSeatsRequestDto;
 import com.bp.cbe.domain.dto.BusyAndAvaliableSeatsResponseDto;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cinema-booking/api/v1/billboards")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class BillboardController {
 
     private BillboardService billboardService;
