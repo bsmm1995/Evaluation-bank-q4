@@ -9,10 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-@Entity
+@Entity(name = "MOVIE")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Movie extends BaseEntity {
+public class MovieEntity extends BaseEntity {
     @Column(name = "name", length = 100, nullable = false)
     private String name;
     @Enumerated(value = EnumType.STRING)

@@ -1,6 +1,6 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.entity.Billboard;
+import com.bp.cbe.domain.entity.BillboardEntity;
 import com.bp.cbe.domain.dto.BillboardDto;
 import com.bp.cbe.domain.dto.BusyAndAvaliableSeatsRequestDto;
 import com.bp.cbe.domain.dto.BusyAndAvaliableSeatsResponseDto;
@@ -37,13 +37,13 @@ public class BillboardServiceImpl implements BillboardService {
 
     @Override
     public BillboardDto create(BillboardDto billboardDto) {
-        Billboard createdBillboard = billboardRepository.save(billboardMapper.toBillboard(billboardDto));
+        BillboardEntity createdBillboard = billboardRepository.save(billboardMapper.toBillboard(billboardDto));
         return billboardMapper.toBillboardDto(createdBillboard);
     }
 
     @Override
     public BillboardDto update(BillboardDto billboardDto) {
-        Optional<Billboard> optional = billboardRepository.findById(billboardDto.getId());
+        Optional<BillboardEntity> optional = billboardRepository.findById(billboardDto.getId());
         if (optional.isPresent()) {
             var entity = optional.get();
             entity.setDate(billboardDto.getDate());

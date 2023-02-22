@@ -7,10 +7,10 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Entity
+@Entity(name = "BILLBOARD")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Billboard extends BaseEntity {
+public class BillboardEntity extends BaseEntity {
     @Column(nullable = false)
     private LocalDate date;
     @Column(name = "START_TIME", nullable = false)
@@ -19,8 +19,8 @@ public class Billboard extends BaseEntity {
     private LocalTime endTime;
     @ManyToOne
     @JoinColumn(name = "ID_MOVIE", nullable = false, foreignKey = @ForeignKey(name = "FK_MOVIE_BILLBOARD"))
-    private Movie movie;
+    private MovieEntity movie;
     @ManyToOne
     @JoinColumn(name = "ID_ROOM", nullable = false, foreignKey = @ForeignKey(name = "FK_ROOM_BILLBOARD"))
-    private Room room;
+    private RoomEntity room;
 }

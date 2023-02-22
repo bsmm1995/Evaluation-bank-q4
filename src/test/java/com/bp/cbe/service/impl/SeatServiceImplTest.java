@@ -1,8 +1,8 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.entity.Booking;
-import com.bp.cbe.domain.entity.Room;
-import com.bp.cbe.domain.entity.Seat;
+import com.bp.cbe.domain.entity.BookingEntity;
+import com.bp.cbe.domain.entity.RoomEntity;
+import com.bp.cbe.domain.entity.SeatEntity;
 import com.bp.cbe.repository.BookingRepository;
 import com.bp.cbe.repository.SeatRepository;
 import com.bp.cbe.service.SeatService;
@@ -29,9 +29,9 @@ class SeatServiceImplTest {
 
     private final int id = 1;
 
-    private Seat seatEntity;
+    private SeatEntity seatEntity;
     private SeatDto seatDto;
-    private Booking booking;
+    private BookingEntity booking;
 
     @BeforeEach
     void setUp() {
@@ -40,19 +40,19 @@ class SeatServiceImplTest {
         seatMapper = mock(SeatMapper.class);
         seatService = new SeatServiceImpl(seatRepository, bookingRepository, seatMapper);
 
-        seatEntity = new Seat();
+        seatEntity = new SeatEntity();
         seatEntity.setId(id);
         seatEntity.setStatus(Boolean.TRUE);
         seatEntity.setNumber((short) 2);
         seatEntity.setRowNumber((short) 5);
-        seatEntity.setRoom(new Room());
+        seatEntity.setRoom(new RoomEntity());
 
         seatDto = new SeatDto();
         seatDto.setId(seatEntity.getId());
         seatDto.setStatus(seatEntity.getStatus());
         seatDto.setNumber(seatEntity.getNumber());
 
-        booking = new Booking();
+        booking = new BookingEntity();
         booking.setStatus(Boolean.TRUE);
     }
 

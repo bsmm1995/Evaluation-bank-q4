@@ -5,15 +5,15 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "SEAT")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Seat extends BaseEntity {
+public class SeatEntity extends BaseEntity {
     @Column(nullable = false)
     private Short number;
     @Column(name = "ROW_NUMBER", nullable = false)
     private Short rowNumber;
     @ManyToOne
     @JoinColumn(name = "ID_ROOM", nullable = false, foreignKey = @ForeignKey(name = "FK_ROOM_SEAT"))
-    private Room room;
+    private RoomEntity room;
 }

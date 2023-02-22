@@ -1,6 +1,6 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.entity.Room;
+import com.bp.cbe.domain.entity.RoomEntity;
 import com.bp.cbe.domain.dto.RoomDto;
 import com.bp.cbe.repository.RoomRepository;
 import com.bp.cbe.service.RoomService;
@@ -31,13 +31,13 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public RoomDto create(RoomDto t) {
-        Room room = roomMapper.toRoom(t);
+        RoomEntity room = roomMapper.toRoom(t);
         return roomMapper.toRoomDto(roomRepository.save(room));
     }
 
     @Override
     public RoomDto update(RoomDto t) {
-        Optional<Room> optional = roomRepository.findById(t.getId());
+        Optional<RoomEntity> optional = roomRepository.findById(t.getId());
         if (optional.isPresent()) {
             var entity = optional.get();
             entity.setName(t.getName());

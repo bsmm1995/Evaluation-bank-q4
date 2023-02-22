@@ -6,10 +6,10 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-@Entity
+@Entity(name = "CUSTOMER")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Customer extends BaseEntity {
+public class CustomerEntity extends BaseEntity {
     @Column(name = "DOCUMENT_NUMBER", length = 20, nullable = false, unique = true)
     private String documentNumber;
     @Column(length = 30, nullable = false)

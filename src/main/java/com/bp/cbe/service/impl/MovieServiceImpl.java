@@ -1,6 +1,6 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.entity.Movie;
+import com.bp.cbe.domain.entity.MovieEntity;
 import com.bp.cbe.domain.dto.MovieDto;
 import com.bp.cbe.repository.MovieRepository;
 import com.bp.cbe.service.MovieService;
@@ -31,13 +31,13 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public MovieDto create(MovieDto t) {
-        Movie movie = movieMapper.toMovie(t);
+        MovieEntity movie = movieMapper.toMovie(t);
         return movieMapper.toMovieDto(movieRepository.save(movie));
     }
 
     @Override
     public MovieDto update(MovieDto t) {
-        Optional<Movie> optional = movieRepository.findById(t.getId());
+        Optional<MovieEntity> optional = movieRepository.findById(t.getId());
         if (optional.isPresent()) {
             var entity = optional.get();
             entity.setName(t.getName());

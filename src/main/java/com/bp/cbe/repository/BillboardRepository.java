@@ -1,6 +1,6 @@
 package com.bp.cbe.repository;
 
-import com.bp.cbe.domain.entity.Billboard;
+import com.bp.cbe.domain.entity.BillboardEntity;
 import com.bp.cbe.domain.interf.BusyAndTotalSeats;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 
 @Repository
-public interface BillboardRepository extends JpaRepository<Billboard, Integer> {
+public interface BillboardRepository extends JpaRepository<BillboardEntity, Integer> {
     @Query(value = "SELECT COUNT(ALL boo.status = 1) AS busySeat, " +
             "(SELECT COUNT(*) FROM Seat s WHERE s.id_room = :roomId) AS total " +
             "FROM Seat sea " +

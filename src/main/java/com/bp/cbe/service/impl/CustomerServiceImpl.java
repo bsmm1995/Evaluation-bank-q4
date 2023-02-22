@@ -1,6 +1,6 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.entity.Customer;
+import com.bp.cbe.domain.entity.CustomerEntity;
 import com.bp.cbe.domain.dto.CustomerDto;
 import com.bp.cbe.repository.CustomerRepository;
 import com.bp.cbe.service.CustomerService;
@@ -30,13 +30,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDto create(CustomerDto t) {
-        Customer customer = customerMapper.toBooking(t);
+        CustomerEntity customer = customerMapper.toBooking(t);
         return customerMapper.toBookingDto(customerRepository.save(customer));
     }
 
     @Override
     public CustomerDto update(CustomerDto t) {
-        Optional<Customer> optional = customerRepository.findById(t.getId());
+        Optional<CustomerEntity> optional = customerRepository.findById(t.getId());
         if (optional.isPresent()) {
             var entity = optional.get();
             entity.setAge(t.getAge());

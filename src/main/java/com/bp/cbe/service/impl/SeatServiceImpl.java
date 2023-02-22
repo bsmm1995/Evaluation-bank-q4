@@ -1,7 +1,7 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.entity.Booking;
-import com.bp.cbe.domain.entity.Seat;
+import com.bp.cbe.domain.entity.BookingEntity;
+import com.bp.cbe.domain.entity.SeatEntity;
 import com.bp.cbe.domain.dto.SeatDto;
 import com.bp.cbe.repository.BookingRepository;
 import com.bp.cbe.repository.SeatRepository;
@@ -33,13 +33,13 @@ public class SeatServiceImpl implements SeatService {
 
     @Override
     public SeatDto create(SeatDto seatDto) {
-        Seat createdSeat = seatRepository.save(seatMapper.toSeat(seatDto));
+        SeatEntity createdSeat = seatRepository.save(seatMapper.toSeat(seatDto));
         return seatMapper.toSeatDto(createdSeat);
     }
 
     @Override
     public SeatDto update(SeatDto seatDto) {
-        Seat editedSeat = seatRepository.save(seatMapper.toSeat(seatDto));
+        SeatEntity editedSeat = seatRepository.save(seatMapper.toSeat(seatDto));
         return seatMapper.toSeatDto(editedSeat);
     }
 
@@ -54,7 +54,7 @@ public class SeatServiceImpl implements SeatService {
         seatRepository.findById(id).ifPresent(seat -> {
             seat.setStatus(Boolean.FALSE);
             seatRepository.save(seat);
-            List<Booking> bookings = bookingRepository.findAllBySeat(seat);
+            List<BookingEntity> bookings = bookingRepository.findAllBySeat(seat);
             for (var booking : bookings) {
                 booking.setStatus(Boolean.FALSE);
             }

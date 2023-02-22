@@ -6,19 +6,19 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
+@Entity(name = "BOOKING")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Booking extends BaseEntity {
+public class BookingEntity extends BaseEntity {
     @Column(nullable = false)
     private LocalDateTime date;
     @ManyToOne
     @JoinColumn(name = "ID_CUSTUMER", nullable = false, foreignKey = @ForeignKey(name = "FK_CUSTOMER_BOOKING"))
-    private Customer customer;
+    private CustomerEntity customer;
     @ManyToOne
     @JoinColumn(name = "ID_SEAT", nullable = false, foreignKey = @ForeignKey(name = "FK_SEAT_BOOKING"))
-    private Seat seat;
+    private SeatEntity seat;
     @ManyToOne
     @JoinColumn(name = "ID_BILLBOARD", nullable = false, foreignKey = @ForeignKey(name = "FK_BILLBOARD_BOOKING"))
-    private Billboard billboard;
+    private BillboardEntity billboard;
 }

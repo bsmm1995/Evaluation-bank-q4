@@ -1,6 +1,6 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.entity.Booking;
+import com.bp.cbe.domain.entity.BookingEntity;
 import com.bp.cbe.domain.dto.BillboardDto;
 import com.bp.cbe.domain.dto.BookingDto;
 import com.bp.cbe.domain.dto.MovieGenreAndDateRequestDto;
@@ -39,7 +39,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public BookingDto create(BookingDto t) {
-        Booking entity = bookingMapper.toBooking(t);
+        BookingEntity entity = bookingMapper.toBooking(t);
         return bookingMapper.toBookingDto(bookingRepository.save(entity));
     }
 
@@ -47,7 +47,7 @@ public class BookingServiceImpl implements BookingService {
     @Modifying
     @Transactional
     public BookingDto update(BookingDto t) {
-        Optional<Booking> optional = bookingRepository.findById(t.getId());
+        Optional<BookingEntity> optional = bookingRepository.findById(t.getId());
         if (optional.isPresent()) {
             var entity = optional.get();
             entity.setDate(t.getDate());
