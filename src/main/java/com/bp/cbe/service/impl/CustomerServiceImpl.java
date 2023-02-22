@@ -1,6 +1,6 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.Customer;
+import com.bp.cbe.domain.entity.Customer;
 import com.bp.cbe.domain.dto.CustomerDto;
 import com.bp.cbe.repository.CustomerRepository;
 import com.bp.cbe.service.CustomerService;

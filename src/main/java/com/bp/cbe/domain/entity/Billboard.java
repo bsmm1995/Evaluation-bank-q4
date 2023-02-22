@@ -1,4 +1,4 @@
-package com.bp.cbe.domain;
+package com.bp.cbe.domain.entity;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

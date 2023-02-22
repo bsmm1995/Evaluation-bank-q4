@@ -1,6 +1,6 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.Booking;
+import com.bp.cbe.domain.entity.Booking;
 import com.bp.cbe.domain.dto.BillboardDto;
 import com.bp.cbe.domain.dto.BookingDto;
 import com.bp.cbe.domain.dto.MovieGenreAndDateRequestDto;

@@ -1,6 +1,6 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.Movie;
+import com.bp.cbe.domain.entity.Movie;
 import com.bp.cbe.domain.dto.MovieDto;
 import com.bp.cbe.repository.MovieRepository;
 import com.bp.cbe.service.MovieService;

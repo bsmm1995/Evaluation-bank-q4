@@ -1,4 +1,4 @@
-package com.bp.cbe.domain;
+package com.bp.cbe.domain.entity;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;

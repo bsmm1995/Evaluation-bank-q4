@@ -1,6 +1,6 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.Room;
+import com.bp.cbe.domain.entity.Room;
 import com.bp.cbe.domain.dto.RoomDto;
 import com.bp.cbe.repository.RoomRepository;
 import com.bp.cbe.service.RoomService;

@@ -1,6 +1,6 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.Billboard;
+import com.bp.cbe.domain.entity.Billboard;
 import com.bp.cbe.domain.dto.BillboardDto;
 import com.bp.cbe.domain.dto.BusyAndAvaliableSeatsRequestDto;
 import com.bp.cbe.domain.dto.BusyAndAvaliableSeatsResponseDto;

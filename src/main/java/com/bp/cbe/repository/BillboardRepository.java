@@ -1,6 +1,6 @@
 package com.bp.cbe.repository;
 
-import com.bp.cbe.domain.Billboard;
+import com.bp.cbe.domain.entity.Billboard;
 import com.bp.cbe.domain.interf.BusyAndTotalSeats;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

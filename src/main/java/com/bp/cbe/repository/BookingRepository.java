@@ -1,7 +1,7 @@
 package com.bp.cbe.repository;
 
-import com.bp.cbe.domain.Booking;
-import com.bp.cbe.domain.Seat;
+import com.bp.cbe.domain.entity.Booking;
+import com.bp.cbe.domain.entity.Seat;
 import com.bp.cbe.domain.enums.MovieGenreEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

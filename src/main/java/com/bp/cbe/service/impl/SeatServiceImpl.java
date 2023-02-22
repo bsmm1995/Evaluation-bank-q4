@@ -1,7 +1,7 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.Booking;
-import com.bp.cbe.domain.Seat;
+import com.bp.cbe.domain.entity.Booking;
+import com.bp.cbe.domain.entity.Seat;
 import com.bp.cbe.domain.dto.SeatDto;
 import com.bp.cbe.repository.BookingRepository;
 import com.bp.cbe.repository.SeatRepository;

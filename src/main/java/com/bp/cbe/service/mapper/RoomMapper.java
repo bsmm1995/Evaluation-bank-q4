@@ -1,6 +1,6 @@
 package com.bp.cbe.service.mapper;
 
-import com.bp.cbe.domain.Room;
+import com.bp.cbe.domain.entity.Room;
 import com.bp.cbe.domain.dto.RoomDto;
 import org.mapstruct.Mapper;
 
