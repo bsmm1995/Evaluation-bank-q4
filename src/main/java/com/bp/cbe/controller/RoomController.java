@@ -1,8 +1,7 @@
 package com.bp.cbe.controller;
 
-import com.bp.cbe.service.RoomService;
 import com.bp.cbe.domain.dto.RoomDto;
-import lombok.AllArgsConstructor;
+import com.bp.cbe.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RoomController {
 
-    private RoomService roomService;
+    private final RoomService roomService;
 
     @GetMapping
     public ResponseEntity<List<RoomDto>> list() {

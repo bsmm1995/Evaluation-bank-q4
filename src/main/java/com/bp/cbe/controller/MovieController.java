@@ -1,8 +1,7 @@
 package com.bp.cbe.controller;
 
-import com.bp.cbe.service.MovieService;
 import com.bp.cbe.domain.dto.MovieDto;
-import lombok.AllArgsConstructor;
+import com.bp.cbe.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MovieController {
 
-    private MovieService movieService;
+    private final MovieService movieService;
 
     @GetMapping
     public ResponseEntity<List<MovieDto>> list() {

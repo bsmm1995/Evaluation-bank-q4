@@ -1,8 +1,7 @@
 package com.bp.cbe.controller;
 
-import com.bp.cbe.service.CustomerService;
 import com.bp.cbe.domain.dto.CustomerDto;
-import lombok.AllArgsConstructor;
+import com.bp.cbe.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CustomerController {
 
-    private CustomerService customerService;
+    private final CustomerService customerService;
 
     @GetMapping
     public ResponseEntity<List<CustomerDto>> list() {

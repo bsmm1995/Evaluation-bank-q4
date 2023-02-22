@@ -2,7 +2,6 @@ package com.bp.cbe.controller;
 
 import com.bp.cbe.domain.dto.SeatDto;
 import com.bp.cbe.service.SeatService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SeatController {
 
-    private SeatService seatService;
+    private final SeatService seatService;
 
     @GetMapping
     public ResponseEntity<List<SeatDto>> list() {

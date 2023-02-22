@@ -1,8 +1,7 @@
 package com.bp.cbe.controller;
 
-import com.bp.cbe.service.BookingService;
 import com.bp.cbe.domain.dto.BookingDto;
-import lombok.AllArgsConstructor;
+import com.bp.cbe.service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookingController {
 
-    private BookingService bookingService;
+    private final BookingService bookingService;
 
     @GetMapping
     public ResponseEntity<List<BookingDto>> list() {

@@ -1,10 +1,9 @@
 package com.bp.cbe.controller;
 
-import com.bp.cbe.service.BillboardService;
 import com.bp.cbe.domain.dto.BillboardDto;
 import com.bp.cbe.domain.dto.BusyAndAvaliableSeatsRequestDto;
 import com.bp.cbe.domain.dto.BusyAndAvaliableSeatsResponseDto;
-import lombok.AllArgsConstructor;
+import com.bp.cbe.service.BillboardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BillboardController {
 
-    private BillboardService billboardService;
+    private final BillboardService billboardService;
 
     @GetMapping
     public ResponseEntity<List<BillboardDto>> list() {
@@ -38,7 +37,7 @@ public class BillboardController {
     }
 
     @PostMapping
-    public ResponseEntity<BillboardDto> create(@RequestBody @Valid BillboardDto billboardDto)  {
+    public ResponseEntity<BillboardDto> create(@RequestBody @Valid BillboardDto billboardDto) {
         BillboardDto createdBillboardDto = billboardService.create(billboardDto);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(createdBillboardDto.getId()).toUri();
