@@ -1,15 +1,20 @@
 package com.bp.cbe.domain.dto.error;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
+import java.time.LocalDateTime;
+
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class ErrorDTO {
     private HttpStatus status;
     private String message;
     private String url;
+    private LocalDateTime date = LocalDateTime.now();
+
+    public ErrorDTO(HttpStatus status, String message, String url) {
+        this.status = status;
+        this.message = message;
+        this.url = url;
+    }
 }

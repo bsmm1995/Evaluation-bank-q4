@@ -21,4 +21,11 @@ public class ExceptionConfig {
         log.error(e.getLocalizedMessage());
         return new ErrorDTO(HttpStatus.NOT_FOUND, e.getLocalizedMessage(), req.getRequestURI());
     }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorDTO exception(Exception e, HttpServletRequest req) {
+        log.error(e.getLocalizedMessage());
+        return new ErrorDTO(HttpStatus.INTERNAL_SERVER_ERROR, e.getLocalizedMessage(), req.getRequestURI());
+    }
 }
