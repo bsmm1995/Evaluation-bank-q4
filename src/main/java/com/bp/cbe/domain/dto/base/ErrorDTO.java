@@ -1,4 +1,4 @@
-package com.bp.cbe.domain.dto.error;
+package com.bp.cbe.domain.dto.base;
 
 import lombok.Data;
 import org.springframework.http.HttpStatus;

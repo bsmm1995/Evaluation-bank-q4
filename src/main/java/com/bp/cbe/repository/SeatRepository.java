@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SeatRepository extends JpaRepository<SeatEntity, Integer> {
     @Modifying
-    @Query("UPDATE SeatEntity SET status = :status WHERE id = :id")
+    @Query("UPDATE SEAT SET status = :status WHERE id = :id")
     void updateStatusById(@Param(value = "status") Boolean status, @Param(value = "id") Integer id);
 }

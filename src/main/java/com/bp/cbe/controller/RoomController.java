@@ -5,6 +5,7 @@ import com.bp.cbe.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -15,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/cinema-booking/api/v1/rooms")
 @RequiredArgsConstructor
+@Validated
 public class RoomController {
 
     private final RoomService roomService;

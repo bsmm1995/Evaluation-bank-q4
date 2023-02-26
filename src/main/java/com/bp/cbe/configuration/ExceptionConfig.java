@@ -1,6 +1,6 @@
 package com.bp.cbe.configuration;
 
-import com.bp.cbe.domain.dto.error.ErrorDTO;
+import com.bp.cbe.domain.dto.base.ErrorDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -27,6 +27,7 @@ public interface BookingRepository extends JpaRepository<BookingEntity, Integer>
     List<BookingEntity> findAllBySeat(SeatEntity seat);
 
     @Modifying
-    @Query("UPDATE BOOKING SET status = :status WHERE ID_SEAT = :seat")
+    @Query(value = "UPDATE BOOKING SET status = :status WHERE ID_SEAT = :seat",
+            nativeQuery = true)
     void updateStatusBySeatId(@Param(value = "status") Boolean status, @Param(value = "seat") Integer seat);
 }

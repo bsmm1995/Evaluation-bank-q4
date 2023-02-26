@@ -1,18 +1,18 @@
 package com.bp.cbe.domain.dto;
 
-import java.time.LocalDate;
-
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@EqualsAndHashCode(callSuper = false)
 public class BusyAndAvaliableSeatsResponseDto {
-	private Integer avaliableSeats;
-	private Integer busySeats;
-	private LocalDate billboardDate;
+    private Integer avaliableSeats;
+    private Integer busySeats;
+    private LocalDate billboardDate;
 }
