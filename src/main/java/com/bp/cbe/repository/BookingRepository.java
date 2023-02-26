@@ -12,11 +12,13 @@ import java.util.List;
 
 @Repository
 public interface BookingRepository extends JpaRepository<BookingEntity, Integer> {
-    @Query(value = "SELECT boo.* FROM Booking boo " +
-            "INNER JOIN Billboard bil ON bil.ID = boo.ID_BILLBOARD " +
-            "INNER JOIN Movie mov ON mov.ID = bil.ID_MOVIE " +
-            "WHERE mov.GENRE = :genre " +
-            "AND bil.date BETWEEN :startDate AND :endDate",
+    @Query(value = """
+            SELECT boo.* FROM Booking boo
+                        INNER JOIN Billboard bil ON bil.ID = boo.ID_BILLBOARD
+                        INNER JOIN Movie mov ON mov.ID = bil.ID_MOVIE
+                        WHERE mov.GENRE = :genre
+                        AND bil.date BETWEEN :startDate AND :endDate
+            """,
             nativeQuery = true)
     List<BookingEntity> findAllByGenreAndDates(MovieGenreEnum genre, LocalDateTime startDate, LocalDateTime endDate);
 

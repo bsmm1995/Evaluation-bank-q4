@@ -1,7 +1,7 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.entity.RoomEntity;
 import com.bp.cbe.domain.dto.RoomDto;
+import com.bp.cbe.domain.entity.RoomEntity;
 import com.bp.cbe.repository.RoomRepository;
 import com.bp.cbe.service.RoomService;
 import com.bp.cbe.service.mapper.RoomMapper;
@@ -49,6 +49,10 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public void delete(Integer id) {
-        roomRepository.deleteById(id);
+        if (roomRepository.existsById(id)) {
+            roomRepository.deleteById(id);
+        } else {
+            throw new NoSuchElementException("Room not found id " + id);
+        }
     }
 }

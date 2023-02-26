@@ -1,10 +1,10 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.entity.BookingEntity;
 import com.bp.cbe.domain.dto.BillboardDto;
 import com.bp.cbe.domain.dto.BookingDto;
 import com.bp.cbe.domain.dto.MovieGenreAndDateRequestDto;
 import com.bp.cbe.domain.dto.SeatDto;
+import com.bp.cbe.domain.entity.BookingEntity;
 import com.bp.cbe.domain.enums.MovieGenreEnum;
 import com.bp.cbe.repository.BookingRepository;
 import com.bp.cbe.service.BookingService;
@@ -59,7 +59,11 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void delete(Integer id) {
-        bookingRepository.deleteById(id);
+        if (bookingRepository.existsById(id)) {
+            bookingRepository.deleteById(id);
+        } else {
+            throw new NoSuchElementException("Booking not found id " + id);
+        }
     }
 
     @Override

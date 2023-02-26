@@ -1,9 +1,9 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.entity.BillboardEntity;
 import com.bp.cbe.domain.dto.BillboardDto;
 import com.bp.cbe.domain.dto.BusyAndAvaliableSeatsRequestDto;
 import com.bp.cbe.domain.dto.BusyAndAvaliableSeatsResponseDto;
+import com.bp.cbe.domain.entity.BillboardEntity;
 import com.bp.cbe.domain.interf.BusyAndTotalSeats;
 import com.bp.cbe.repository.BillboardRepository;
 import com.bp.cbe.service.BillboardService;
@@ -55,7 +55,11 @@ public class BillboardServiceImpl implements BillboardService {
 
     @Override
     public void delete(Integer id) {
-        billboardRepository.deleteById(id);
+        if (billboardRepository.existsById(id)) {
+            billboardRepository.deleteById(id);
+        } else {
+            throw new NoSuchElementException("Billboard not found id " + id);
+        }
     }
 
     @Override

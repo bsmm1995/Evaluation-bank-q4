@@ -1,7 +1,7 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.entity.MovieEntity;
 import com.bp.cbe.domain.dto.MovieDto;
+import com.bp.cbe.domain.entity.MovieEntity;
 import com.bp.cbe.repository.MovieRepository;
 import com.bp.cbe.service.MovieService;
 import com.bp.cbe.service.mapper.MovieMapper;
@@ -49,6 +49,10 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public void delete(Integer id) {
-        movieRepository.deleteById(id);
+        if (movieRepository.existsById(id)) {
+            movieRepository.deleteById(id);
+        } else {
+            throw new NoSuchElementException("Movie not found id " + id);
+        }
     }
 }

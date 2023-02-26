@@ -52,7 +52,11 @@ public class SeatServiceImpl implements SeatService {
 
     @Override
     public void delete(Integer id) {
-        seatRepository.deleteById(id);
+        if (seatRepository.existsById(id)) {
+            seatRepository.deleteById(id);
+        } else {
+            throw new NoSuchElementException("Room not found id " + id);
+        }
     }
 
     @Override

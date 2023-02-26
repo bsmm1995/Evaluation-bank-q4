@@ -1,7 +1,7 @@
 package com.bp.cbe.service.impl;
 
-import com.bp.cbe.domain.entity.CustomerEntity;
 import com.bp.cbe.domain.dto.CustomerDto;
+import com.bp.cbe.domain.entity.CustomerEntity;
 import com.bp.cbe.repository.CustomerRepository;
 import com.bp.cbe.service.CustomerService;
 import com.bp.cbe.service.mapper.CustomerMapper;
@@ -42,12 +42,16 @@ public class CustomerServiceImpl implements CustomerService {
             entity.setAge(t.getAge());
             return customerMapper.toBookingDto(customerRepository.save(entity));
         } else {
-                throw new NoSuchElementException("Customer not found id " + t.getId());
+            throw new NoSuchElementException("Customer not found id " + t.getId());
         }
     }
 
     @Override
     public void delete(Integer id) {
-        customerRepository.deleteById(id);
+        if (customerRepository.existsById(id)) {
+            customerRepository.deleteById(id);
+        } else {
+            throw new NoSuchElementException("Customer not found id " + id);
+        }
     }
 }
