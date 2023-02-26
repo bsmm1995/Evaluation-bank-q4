@@ -1,7 +1,6 @@
 package com.bp.cbe.service.impl;
 
 import com.bp.cbe.domain.dto.SeatDto;
-import com.bp.cbe.domain.entity.BookingEntity;
 import com.bp.cbe.domain.entity.SeatEntity;
 import com.bp.cbe.repository.BookingRepository;
 import com.bp.cbe.repository.SeatRepository;
@@ -62,14 +61,7 @@ public class SeatServiceImpl implements SeatService {
     @Override
     @Transactional
     public void inhabilite(Integer id) {
-        seatRepository.findById(id).ifPresent(seat -> {
-            seat.setStatus(Boolean.FALSE);
-            seatRepository.save(seat);
-            List<BookingEntity> bookings = bookingRepository.findAllBySeat(seat);
-            for (var booking : bookings) {
-                booking.setStatus(Boolean.FALSE);
-            }
-            bookingRepository.saveAll(bookings);
-        });
+        seatRepository.updateStatusById(Boolean.FALSE, id);
+        bookingRepository.updateStatusBySeatId(Boolean.FALSE, id);
     }
 }
