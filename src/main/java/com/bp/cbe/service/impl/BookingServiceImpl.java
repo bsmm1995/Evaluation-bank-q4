@@ -85,8 +85,8 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public List<BookingDto> findByGenreAndDates(LocalDateTime startDate, LocalDateTime endDate) {
-        return bookingRepository.findAllByGenreAndDates(MovieGenreEnum.HORROR, startDate, endDate).stream()
+    public List<BookingDto> findByGenreAndDates(MovieGenreEnum genre, LocalDateTime startDate, LocalDateTime endDate) {
+        return bookingRepository.findAllByGenreAndDates(genre, startDate, endDate).stream()
                 .map(bookingMapper::toBookingDto).toList();
     }
 }

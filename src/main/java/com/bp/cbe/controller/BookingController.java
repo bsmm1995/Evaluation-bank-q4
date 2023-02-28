@@ -1,6 +1,7 @@
 package com.bp.cbe.controller;
 
 import com.bp.cbe.domain.dto.BookingDto;
+import com.bp.cbe.domain.enums.MovieGenreEnum;
 import com.bp.cbe.service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -31,9 +32,10 @@ public class BookingController {
     }
 
     @GetMapping("/filter")
-    public ResponseEntity<List<BookingDto>> findByGenreAndDates(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss", iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
+    public ResponseEntity<List<BookingDto>> findByGenreAndDates(@RequestParam MovieGenreEnum genre,
+                                                                @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss", iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
                                                                 @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss", iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate) {
-        return ResponseEntity.ok(bookingService.findByGenreAndDates(startDate, endDate));
+        return ResponseEntity.ok(bookingService.findByGenreAndDates(genre, startDate, endDate));
     }
 
     @PostMapping
