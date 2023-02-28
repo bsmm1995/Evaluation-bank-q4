@@ -1,6 +1,5 @@
 package com.bp.cbe.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +27,18 @@ class BillboardControllerTest {
     }
 
     @Test
-    void listBusyAndAvaliableSeatsByRoomAndDate() throws Exception {
+    void listBusyAndAvaliableSeatsByRoomAndDateWithoutMandatoryFields() throws Exception {
         mvc.perform(MockMvcRequestBuilders
                         .get("/cinema-booking/api/v1/billboards/status")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    void listBusyAndAvaliableSeatsByRoomAndDate() throws Exception {
+        mvc.perform(MockMvcRequestBuilders
+                        .get("/cinema-booking/api/v1/billboards/status?idRoom=1&billboardDate=2023-02-27")
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())

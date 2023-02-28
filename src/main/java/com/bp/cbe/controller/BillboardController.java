@@ -32,7 +32,7 @@ public class BillboardController {
     }
 
     @GetMapping("/status")
-    public ResponseEntity<BusyAndAvaliableSeatsResponseDto> listBusyAndAvaliableSeatsByRoomAndDate(BusyAndAvaliableSeatsRequestDto fiter) {
+    public ResponseEntity<BusyAndAvaliableSeatsResponseDto> listBusyAndAvaliableSeatsByRoomAndDate(@Valid BusyAndAvaliableSeatsRequestDto fiter) {
         return ResponseEntity.ok(billboardService.listBusyAndAvaliableSeatsByRoomAndDate(fiter));
     }
 
